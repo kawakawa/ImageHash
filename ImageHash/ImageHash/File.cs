@@ -8,6 +8,14 @@ namespace ImageHash
 {
     public class File
     {
-
+        /// <summary>
+        /// 指定ファイルが存在するか
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
+        public bool Exists(string path)
+        {
+            return false;
+        }
     }
 }

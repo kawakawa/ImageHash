@@ -4,11 +4,12 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace ImageHash.Test
 {
     [TestClass]
-    public class UnitTest1
+    public class FileTests
     {
         [TestMethod]
-        public void TestMethod1()
+        public void ファイル存在テスト_存在しないファイル指定()
         {
+
         }
     }
 }

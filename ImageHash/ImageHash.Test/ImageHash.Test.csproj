@@ -50,11 +50,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ChainingAssertion.MSTest.cs" />
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="FileTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="TestFiles\SampleImages\image_1.jpg" />
+    <Content Include="TestFiles\SampleImages\image_2.jpg" />
+    <Content Include="TestFiles\SampleImages\image_3.jpg" />
+    <Content Include="TestFiles\SampleImages\image_4.jpg" />
+    <Content Include="TestFiles\SampleImages\image_5.jpg" />
+    <Content Include="TestFiles\SampleImages\image_6.jpg" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
