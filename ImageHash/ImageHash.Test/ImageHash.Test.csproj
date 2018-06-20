@@ -56,14 +56,31 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <Content Include="TestFiles\SampleImages\image_1.jpg" />
-    <Content Include="TestFiles\SampleImages\image_2.jpg" />
-    <Content Include="TestFiles\SampleImages\image_3.jpg" />
-    <Content Include="TestFiles\SampleImages\image_4.jpg" />
-    <Content Include="TestFiles\SampleImages\image_5.jpg" />
-    <Content Include="TestFiles\SampleImages\image_6.jpg" />
+    <ProjectReference Include="..\ImageHash\ImageHash.csproj">
+      <Project>{2d0acf01-ef90-4ced-9ead-ac78a59f014f}</Project>
+      <Name>ImageHash</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="TestFiles\SampleImages\image_1.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestFiles\SampleImages\image_2.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestFiles\SampleImages\image_3.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestFiles\SampleImages\image_4.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestFiles\SampleImages\image_5.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestFiles\SampleImages\image_6.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

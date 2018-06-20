@@ -13,9 +13,15 @@ namespace ImageHash
         /// </summary>
         /// <param name="path"></param>
         /// <returns></returns>
-        public bool Exists(string path)
+        public static bool Exists(string path)
         {
-            return false;
+            if (string.IsNullOrWhiteSpace(path))
+                return false;
+
+            var fileInfo = new System.IO.FileInfo(path);
+            
+
+            return fileInfo.Exists;
         }
     }
 }
