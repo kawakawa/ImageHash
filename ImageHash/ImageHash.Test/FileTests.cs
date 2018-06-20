@@ -27,5 +27,23 @@ namespace ImageHash.Test
             var exists = ImageHash.File.Exists("./TestFiles/");
             exists.IsFalse();
         }
+
+
+        [TestMethod]
+        public void Imageデータ取得テスト_存在するファイル指定()
+        {
+            var imageData = ImageHash.File.GetImage("./TestFiles/SampleImages/image_1.jpg");
+            imageData.IsNotNull();
+            imageData.Height.Is(1200);
+            imageData.Width.Is(1920);
+        }
+
+        [TestMethod]
+        public void Imageデータ取得テスト_存在しないファイル指定()
+        {
+            var imageData = ImageHash.File.GetImage("./Dummy.jpg");
+            imageData.IsNull();
+        }
+
     }
 }

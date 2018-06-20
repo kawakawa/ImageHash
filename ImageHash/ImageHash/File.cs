@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
+using System.Net.Mime;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -23,5 +25,22 @@ namespace ImageHash
 
             return fileInfo.Exists;
         }
+
+
+        /// <summary>
+        /// Imageデータ取得
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
+        public static Image GetImage(string path)
+        {
+            if(Exists(path)==false)
+                return null;
+
+            var  img = Image.FromFile(path);
+            return img;
+        }
+
+
     }
 }
