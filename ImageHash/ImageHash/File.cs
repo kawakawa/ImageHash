@@ -8,5 +8,6 @@ namespace ImageHash
 {
     public class File
     {
+
     }
 }
