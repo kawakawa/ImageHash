@@ -37,8 +37,17 @@ namespace ImageHash
             if(Exists(path)==false)
                 return null;
 
-            var  img = Image.FromFile(path);
-            return img;
+            try
+            {
+                var img = Image.FromFile(path);
+                return img;
+            }
+            catch (OutOfMemoryException)
+            {
+                //画像ファイル以外はNullを返す
+                return null;
+            }
+
         }
 
 

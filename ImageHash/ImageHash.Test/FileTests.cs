@@ -45,5 +45,11 @@ namespace ImageHash.Test
             imageData.IsNull();
         }
 
+        [TestMethod]
+        public void Imageデータ取得テスト_画材ファイル以外を指定()
+        {
+            var imageData = ImageHash.File.GetImage("./TestFiles/NonImageFiles/sample.txt");
+            imageData.IsNull();
+        }
     }
 }
