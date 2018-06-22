@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Net.Mime;
 using System.Text;
@@ -32,14 +33,14 @@ namespace ImageHash
         /// </summary>
         /// <param name="path"></param>
         /// <returns></returns>
-        public static Image GetImage(string path)
+        public static System.Drawing.Image GetImage(string path)
         {
             if(Exists(path)==false)
                 return null;
 
             try
             {
-                var img = Image.FromFile(path);
+                var img = System.Drawing.Image.FromFile(path);
                 return img;
             }
             catch (OutOfMemoryException)
@@ -48,6 +49,20 @@ namespace ImageHash
                 return null;
             }
 
+        }
+
+        /// <summary>
+        /// Imageデータ保存
+        /// </summary>
+        /// <param name="image"></param>
+        /// <param name="path"></param>
+        public static void SaveImage(ImageHash.Image image,string path)
+        {
+            var bitmap = image.Bitmap;
+            bitmap.Save(
+                path,
+                System.Drawing.Imaging.ImageFormat.Bmp
+            );
         }
 
 
