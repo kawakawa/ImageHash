@@ -6,6 +6,31 @@ namespace ImageHash.Test
     [TestClass]
     public class ProgramTests
     {
+
+        [TestMethod]
+        public void ハッシュ値取得_黒()
+        {
+            var hash = ImageHash.Program.GetImgHashLong("./TestFiles/SampleImages/image_black.jpg");
+            hash.Is(72340172838076673);
+        }
+
+
+        [TestMethod]
+        public void ハッシュ値取得_白()
+        {
+            var hash = ImageHash.Program.GetImgHashLong("./TestFiles/SampleImages/image_white.jpg");
+            hash.Is(72340172838076672);
+        }
+
+
+        [TestMethod]
+        public void ハッシュ値取得_1()
+        {
+            var hash = ImageHash.Program.GetImgHashLong("./TestFiles/SampleImages/image_1.jpg");
+            hash.Is(72339069031481600);
+        }
+
+
         [TestMethod]
         public void ハミング距離テスト_黒と黒_同一ファイル()
         {

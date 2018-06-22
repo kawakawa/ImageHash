@@ -42,6 +42,20 @@ namespace ImageHash
         }
 
 
+        public static long GetImgHashLong(string path)
+        {
+            var hash = GetImgHash(path);
+            return BitConverter.ToInt64(hash.ToArray(), 0);
+        }
+
+
+        public static byte[] GetImgHash(string path)
+        {
+            var img = File.GetImage(path);
+            return GetImgHash(img);
+        }
+
+
         public static byte[] GetImgHash(System.Drawing.Image img)
         {
             var imgData = new Image(img);
@@ -50,5 +64,9 @@ namespace ImageHash
 
             return imgData.GetDHash();
         }
+
+
+
+
     }
 }
