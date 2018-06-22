@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Drawing.Drawing2D;
-using System.Drawing.Imaging;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ImageHash
 {
@@ -47,14 +42,14 @@ namespace ImageHash
         public void Resize(Size newSize)
         {
             Bitmap = new Bitmap(_image,newSize);
-            _image = (System.Drawing.Image)Bitmap;
+            _image = Bitmap;
         }
 
 
         public void ChangeGrayscale()
         {
 
-            Bitmap grayBitmap = new Bitmap(Bitmap.Width, Bitmap.Height);
+            var grayBitmap = new Bitmap(Bitmap.Width, Bitmap.Height);
 
             for (int x = 0; x < Bitmap.Width; x++)
             {
@@ -68,38 +63,6 @@ namespace ImageHash
             }
 
             Bitmap = grayBitmap;
-
-            //            //グレースケールの描画先となるImageオブジェクトを作成
-            //            Bitmap newImg = new Bitmap(img.Width, img.Height);
-            //            //newImgのGraphicsオブジェクトを取得
-            //            Graphics g = Graphics.FromImage(newImg);
-            //
-            //            //ColorMatrixオブジェクトの作成
-            //            //グレースケールに変換するための行列を指定する
-            //            System.Drawing.Imaging.ColorMatrix cm =
-            //                new System.Drawing.Imaging.ColorMatrix(
-            //                    new float[][]{
-            //                        new float[]{0.299f, 0.299f, 0.299f, 0 ,0},
-            //                        new float[]{0.587f, 0.587f, 0.587f, 0, 0},
-            //                        new float[]{0.114f, 0.114f, 0.114f, 0, 0},
-            //                        new float[]{0, 0, 0, 1, 0},
-            //                        new float[]{0, 0, 0, 0, 1}
-            //                    });
-            //            //ImageAttributesオブジェクトの作成
-            //            System.Drawing.Imaging.ImageAttributes ia =
-            //                new System.Drawing.Imaging.ImageAttributes();
-            //            //ColorMatrixを設定する
-            //            ia.SetColorMatrix(cm);
-            //
-            //            //ImageAttributesを使用してグレースケールを描画
-            //            g.DrawImage(img,
-            //                new Rectangle(0, 0, img.Width, img.Height),
-            //                0, 0, img.Width, img.Height, GraphicsUnit.Pixel, ia);
-            //
-            //            //リソースを解放する
-            //            g.Dispose();
-            //
-            //            return newImg;
         }
 
 
@@ -141,10 +104,7 @@ namespace ImageHash
                     var basePixcel = GetRByPixcel(x,y);
                     var targetPixcel = GetRByPixcel(x+1, y);
 
-                    if (basePixcel < targetPixcel)
-                        hash.Add(0);
-                    else 
-                        hash.Add(1);
+                    hash.Add(basePixcel < targetPixcel ? (byte) 0 : (byte) 1);
                 }
             }
 
@@ -154,39 +114,9 @@ namespace ImageHash
 
         public long GetDHashByLong()
         {
-            var hash = new List<byte>();
-
-            for (int y = 0; y < 8; y++)
-            {
-                for (int x = 0; x < 8; x++)
-                {
-                    var basePixcel = GetRByPixcel(x, y);
-                    var targetPixcel = GetRByPixcel(x + 1, y);
-
-                    if (basePixcel < targetPixcel)
-                        hash.Add(0);
-                    else
-                        hash.Add(1);
-                }
-            }
-
-            return BitConverter.ToInt64(hash.ToArray(), 0);
+            var bin = GetDHash();
+            return BitConverter.ToInt64(bin, 0);
         }
-
-
-
-
-
-
-
-
-
-
-        //        public void ChangeGrayscale()
-        //        {
-        //
-        //        }
-
 
 
     }
